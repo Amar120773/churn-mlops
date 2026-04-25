@@ -31,7 +31,6 @@ print("Test shape:", X_test.shape)
 # -----------------------------
 # 3. Model Training + MLflow
 # -----------------------------
-
 best_model = None
 best_f1 = 0
 best_run_id = None
@@ -100,3 +99,16 @@ if best_run_id is not None:
 
     print("\nBest model registered in MLflow Model Registry!")
     print("Best F1 Score:", best_f1)
+
+
+# -----------------------------
+# 5. Save Model for Deployment
+# -----------------------------
+import joblib
+import os
+
+os.makedirs("model", exist_ok=True)
+
+joblib.dump(best_model, "model/model.pkl")
+
+print("\nModel saved successfully for deployment!")
