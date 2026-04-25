@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import mlflow.pyfunc
+import joblib   # ✅ changed
 
 # -----------------------------
 # Page Config
@@ -11,9 +11,10 @@ st.set_page_config(
 )
 
 # -----------------------------
-# Load Model
+# Load Model (FIXED)
 # -----------------------------
-model = mlflow.pyfunc.load_model("model")
+model = joblib.load("model/model.pkl")   # ✅ changed
+
 # -----------------------------
 # Load dataset columns
 # -----------------------------
